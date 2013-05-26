@@ -7,6 +7,7 @@ spl_autoload_register(array(new \org\mizer\ClassLoader(), 'load'));
 
 class RewindableIteratorTest extends \PHPUnit_Framework_TestCase 
 {
+
     public function testFullIteration() {
         
         $dao = new Dao();
@@ -20,8 +21,8 @@ class RewindableIteratorTest extends \PHPUnit_Framework_TestCase
         foreach($itr as $widget) {
             $results[] = $widget;
         }        
-        
-        $this->assertTrue(count($results) == 3);
+
+        $this->assertEquals(3, count($results));
     }
     
     public function testFullIterationWithInterupt() {
@@ -39,9 +40,9 @@ class RewindableIteratorTest extends \PHPUnit_Framework_TestCase
             if(++$i > 1) break;
             $results[] = $widget;
         }        
-        
-        $this->assertTrue(count($results) == 1);
-    }    
+
+        $this->assertEquals(1, count($results));
+    }
     
     public function testTwoFullIterations() {
         
@@ -56,18 +57,18 @@ class RewindableIteratorTest extends \PHPUnit_Framework_TestCase
         foreach($itr as $widget) {
             $results[] = $widget;
         }        
-        
-        $this->assertTrue(count($results) == 3);
-        
+
+        $this->assertEquals(3, count($results));
+
         $results = array();
 
         /* Prints this time */
         foreach($itr as $widget) {
             $results[] = $widget;
         }        
-        
-        $this->assertTrue(count($results) == 3);        
-    } 
+
+        $this->assertEquals(3, count($results));
+    }
     
     public function testTwoFullIterationsWithInterupt() {
         
@@ -83,17 +84,17 @@ class RewindableIteratorTest extends \PHPUnit_Framework_TestCase
             if(++$i > 1) break;
             $results[] = $widget;
         }        
-        
-        $this->assertTrue(count($results) == 1);
-        
+
+        $this->assertEquals(1, count($results));
+
         $results = array();
 
         /* Prints this time */
         foreach($itr as $widget) {
             $results[] = $widget;
         }        
-        
-        $this->assertTrue(count($results) == 3);        
-    }    
+
+        $this->assertEquals(3, count($results));
+    }
     
 }
